@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const getFormattedDate = function () {
   const date = new Date()
-  const options = { month: 'long', day: 'numeric', year: 'numeric' }
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }
   return date.toLocaleDateString('en-US', options)
 }
 
