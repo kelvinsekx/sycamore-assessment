@@ -38,7 +38,7 @@ const customersStore = useCustomerStore()
       v-model="search"
       name=""
       class="border-0 outline-none"
-      placeholder="search"
+      placeholder="search name, phone"
       @input="customersStore.setSearchQuery(search)"
     />
     <!-- decorative icons on inputs -->

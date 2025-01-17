@@ -21,9 +21,8 @@ const customersStore = useCustomerStore()
 
 // modal
 const toggleModal = () => (showModal.value = !showModal.value)
-const toggleUpdateModal = (index) => {
+const toggleUpdateModal = () => {
   showUpdateModal.value = !showUpdateModal.value
-  activeTableDataIndex.value = index
 }
 const toggleOtherActions = (index) => {
   if (activeTableDataIndex.value == index) {
@@ -270,6 +269,15 @@ const togglePromptBeforeDeleteModal = (index) => {
                   </svg>
                 </button>
               </td>
+            </tr>
+          </template>
+          <template
+            v-if="
+              customersStore.customers.length < 1 || customersStore.filteredCustomers.length < 1
+            "
+          >
+            <tr>
+              <td class="text-left pl-5 text-lg">No data</td>
             </tr>
           </template>
         </tbody>

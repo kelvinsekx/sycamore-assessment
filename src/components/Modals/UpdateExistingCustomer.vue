@@ -51,6 +51,11 @@ watch(
   },
   { immediate: true }, // Run immediately on component mount
 )
+
+const handleSubmit = function () {
+  customersStore.updateCustomer(props.index, { ...form })
+  props.toggleModal()
+}
 </script>
 
 <template>
@@ -104,7 +109,7 @@ watch(
         type="submit"
         class="bg-green-100 text-green-700 px-3 py-1 rounded-sm border border-green-700"
       >
-        Submit
+        Update
       </button>
     </form>
   </CardModalComponent>
