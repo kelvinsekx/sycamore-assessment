@@ -3,7 +3,7 @@ import { ref } from 'vue'
 // store
 import { useCustomerStore } from '../stores/customerStore'
 
-const searchInputRef = ref(null)
+const searchInputRef = ref<HTMLInputElement | null>(null)
 const search = ref('')
 const focusInput = function () {
   if (searchInputRef.value) {
