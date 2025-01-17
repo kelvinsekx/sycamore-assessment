@@ -8,19 +8,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  toggleModal: {
-    type: Function,
-  },
   index: {
     type: Number,
     required: true,
   },
 })
 
+const emits = defineEmits(['toggleModal'])
+
 const customersStore = useCustomerStore()
 </script>
 <template>
-  <CardModalComponent :showing="showing" @toggle-modal="toggleModal">
+  <CardModalComponent :showing="showing" @toggle-modal="emits('toggleModal')">
     <div>
       <h1 class="text-4xl">
         <svg
@@ -46,14 +45,16 @@ const customersStore = useCustomerStore()
           @click="
             () => {
               customersStore.deleteCustomer(index)
-              alsert(index)
-              toggleModal()
+              emits('toggleModal')
             }
           "
         >
           Delete
         </button>
-        <button class="bg-slate-200 text-slate-700 px-3 py-1 rounded-sm" @click="toggleModal">
+        <button
+          class="bg-slate-200 text-slate-700 px-3 py-1 rounded-sm"
+          @click="emits('toggleModal')"
+        >
           Cancel
         </button>
       </div>

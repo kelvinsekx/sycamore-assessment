@@ -6,7 +6,7 @@ export class CustomerType {
   email: string
   phone: string
   state: string
-  status: 'active' | 'inactive'
+  status: boolean
   details: string
   constructor(
     firstName: string,
@@ -14,7 +14,7 @@ export class CustomerType {
     email: string,
     phone: string,
     state: string,
-    status: 'active' | 'inactive' = 'active',
+    status: boolean,
     details: string,
   ) {
     this.firstName = firstName

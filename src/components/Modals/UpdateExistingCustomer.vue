@@ -11,9 +11,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  toggleModal: {
-    type: Function,
-  },
   index: {
     type: Number,
     required: true,
@@ -26,7 +23,7 @@ const form = reactive({
   email: '',
   phone: '',
   state: 'Lagos',
-  active: false,
+  status: false,
   details: '',
 })
 
@@ -38,7 +35,7 @@ function updateForm() {
     form.email = activeItem.email || ''
     form.phone = activeItem.phone || ''
     form.state = activeItem.state || 'Lagos'
-    form.active = activeItem.active || false
+    form.status = activeItem.status || false
     form.details = activeItem.details || ''
   }
 }
@@ -52,14 +49,15 @@ watch(
   { immediate: true }, // Run immediately on component mount
 )
 
+const emits = defineEmits(['toggleModal'])
 const handleSubmit = function () {
   customersStore.updateCustomer(props.index, { ...form })
-  props.toggleModal()
+  emits('toggleModal', { index: props.index })
 }
 </script>
 
 <template>
-  <CardModalComponent :showing="showing" @toggle-modal="toggleModal">
+  <CardModalComponent :showing="showing" @toggle-modal="emits('toggleModal', { index })">
     <header class="font-semibold text-2xl pl-4">Update Customer Info {{ index }}</header>
     <form @submit.prevent="handleSubmit" class="space-y-4 p-4">
       <div class="flex gap-4">
@@ -93,7 +91,7 @@ const handleSubmit = function () {
           </select>
         </div>
         <div class="flex items-center">
-          <input v-model="form.active" id="active" type="checkbox" class="mr-2" />
+          <input v-model="form.status" id="active" type="checkbox" class="mr-2" />
           <label for="active" class="font-medium text-gray-700">Set to active</label>
         </div>
       </div>

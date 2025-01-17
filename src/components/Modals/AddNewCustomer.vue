@@ -2,7 +2,6 @@
 import CardModalComponent from '../CardModalComponent.vue'
 import { ref, computed } from 'vue'
 
-// store
 import { useCustomerStore } from '../../stores/customerStore'
 
 const form = ref({
@@ -30,14 +29,11 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  toggleModal: {
-    type: Function,
-  },
 })
 
 // store
 const customersStore = useCustomerStore()
-const emits = defineEmits('toggle-modal')
+const emits = defineEmits(['toggle-modal'])
 
 const handleSubmit = function () {
   if (isValid.value) {
@@ -57,7 +53,7 @@ const handleSubmit = function () {
 </script>
 
 <template>
-  <CardModalComponent :showing="showing" @toggle-modal="toggleModal">
+  <CardModalComponent :showing="showing" @toggle-modal="emits('toggle-modal')">
     <header class="font-semibold text-2xl pl-4">Add New Customer</header>
     <form @submit.prevent="handleSubmit" class="space-y-4 p-4">
       <div class="flex gap-4">
