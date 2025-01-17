@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+// store
+import { useCustomerStore } from '../stores/customerStore'
 
 const searchInputRef = ref(null)
+const search = ref('')
 const focusInput = function () {
   if (searchInputRef.value) {
     searchInputRef.value.focus()
   }
 }
+
+//store
+const customersStore = useCustomerStore()
 </script>
 <template>
   <!-- enable the input to take focus irrespective of where is clicked on the pseudo input (that is just a div) -->
@@ -29,9 +35,11 @@ const focusInput = function () {
     <input
       ref="searchInputRef"
       type="text"
+      v-model="search"
       name=""
       class="border-0 outline-none"
       placeholder="search"
+      @input="customersStore.setSearchQuery(search)"
     />
     <!-- decorative icons on inputs -->
     <!-- for humans: Sekx like to use inline svgs because that is how the bundler treats them anyways even if they're put in a separate file - the <<Icons>> folder -->
