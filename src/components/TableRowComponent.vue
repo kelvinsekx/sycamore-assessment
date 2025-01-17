@@ -21,7 +21,7 @@ const emitToggleOtherActions = (index: number) => emits('toggleOtherActions', { 
 const emitToggleUpdateModal = (index: number) => emits('toggleUpdateModal', { index })
 </script>
 <template>
-  <tr class="sekx_tr" v-for="(customer, index) in customers" :key="customer.firstName">
+  <tr class="sekx_tr bg-white" v-for="(customer, index) in customers" :key="customer.firstName">
     <td class="border-b text-xs">
       <div>
         <p class="whitespace-no-wrap font-semibold">{{ customer.firstName }}</p>

@@ -13,7 +13,7 @@ const toggleModal = () => {
 }
 </script>
 <template>
-  <div class="flex w-full justify-between">
+  <div class="flex flex-col max-md:gap-4 max-md:px-4 md:flex-row w-full justify-between">
     <div class="text-3xl font-semibold">Customer</div>
     <div class="flex gap-6">
       <div class="border border-black rounded-md px-2 py-1">

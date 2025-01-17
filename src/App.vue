@@ -57,7 +57,9 @@ const customersStore = useCustomerStore()
 
     <BreadCrumb @toggle-modal="toggleModal" />
     <div class="mt-10 bg-white rounded-lg border-gray-200 border">
-      <div class="w-full flex justify-between items-center px-8 py-6">
+      <div
+        class="flex flex-col max-md:gap-4 max-md:px-4 md:flex-row justify-between items-center px-8 py-6"
+      >
         <span class="text-2xl font-semibold">Customer List</span>
         <SearchComponent />
       </div>
@@ -94,17 +96,13 @@ const customersStore = useCustomerStore()
               :active-index="activeTableDataIndex"
             />
           </template>
-          <template
-            v-if="
-              customersStore.customers.length < 1 || customersStore.filteredCustomers.length < 1
-            "
-          >
-            <tr>
-              <td class="text-left pl-5 text-lg">No data</td>
-            </tr>
-          </template>
         </tbody>
       </table>
+      <template
+        v-if="customersStore.customers.length < 1 || customersStore.filteredCustomers.length < 1"
+      >
+        <p class="text-center pl-5 text-base font-semibold">No data</p>
+      </template>
     </div>
   </div>
 </template>
