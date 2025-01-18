@@ -26,7 +26,11 @@ const close = () => {
       &times; CLOSE
     </button>
     <!-- the attr main__content exist for easy readability for humans -->
-    <div id="main__content" class="w-fit max-w-2xl bg-white shadow-lg rounded-lg p-8" @click.stop>
+    <div
+      id="main__content"
+      class="w-fit max-w-2xl bg-white shadow-lg rounded-lg p-8 max-h-[80%] overflow-y-scroll"
+      @click.stop
+    >
       <slot></slot>
     </div>
   </div>

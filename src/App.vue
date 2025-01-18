@@ -40,7 +40,7 @@ const customersStore = useCustomerStore()
 </script>
 
 <template>
-  <div class="container mx-auto py-10 relative">
+  <div class="container mx-auto py-10 relative max-w-4xl">
     <!-- all the modals used on this page -->
     <AddNewCustomer :showing="showModal" :toggleModal="toggleModal" @toggle-modal="toggleModal" />
     <UpdateExistingCustomer
@@ -63,46 +63,58 @@ const customersStore = useCustomerStore()
         <span class="text-2xl font-semibold">Customer List</span>
         <SearchComponent />
       </div>
-      <table class="min-w-full leading-normal">
-        <thead class="">
-          <tr class="border-gray-200 border-t border-b bg-white uppercase text-xs text-gray-600">
-            <th class="px-5 py-3 font-semibold border-gray-200 text-left">First Name - Email</th>
-            <th
-              class="px-5 py-3 font-semibold border-gray-200 text-left"
-              v-for="label in tableHeaderLabels"
-              :key="label"
-            >
-              {{ label }}
-            </th>
-            <th class="px-5 py-3 border-gray-200"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-if="!customersStore.searchQuery">
-            <TableRowComponent
-              :customers="customersStore.customers"
-              @toggle-prompt-before-delete-modal="togglePromptBeforeDeleteModal"
-              @toggle-other-actions="toggleOtherActions"
-              @toggle-update-modal="toggleUpdateModal"
-              :active-index="activeTableDataIndex"
-            />
-          </template>
-          <template v-else>
-            <TableRowComponent
-              :customers="customersStore.filteredCustomers"
-              @toggle-prompt-before-delete-modal="togglePromptBeforeDeleteModal"
-              @toggle-other-actions="toggleOtherActions"
-              @toggle-update-modal="toggleUpdateModal"
-              :active-index="activeTableDataIndex"
-            />
-          </template>
-        </tbody>
-      </table>
-      <template
-        v-if="customersStore.customers.length < 1 || customersStore.filteredCustomers.length < 1"
-      >
-        <p class="text-center pl-5 text-base font-semibold">No data</p>
-      </template>
+      <div class="max-w-full max-md:overflow-x-scroll">
+        <table class="min-w-full leading-normal">
+          <thead class="">
+            <tr class="border-gray-200 border-t border-b bg-white uppercase text-xs text-gray-600">
+              <th class="px-5 py-3 font-semibold border-gray-200 text-left no-shrink">
+                First Name - Email
+              </th>
+              <th
+                class="px-5 py-3 font-semibold border-gray-200 text-left no-shrink"
+                v-for="label in tableHeaderLabels"
+                :key="label"
+              >
+                {{ label }}
+              </th>
+              <th class="px-5 py-3 border-gray-200"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-if="!customersStore.searchQuery">
+              <TableRowComponent
+                :customers="customersStore.customers"
+                @toggle-prompt-before-delete-modal="togglePromptBeforeDeleteModal"
+                @toggle-other-actions="toggleOtherActions"
+                @toggle-update-modal="toggleUpdateModal"
+                :active-index="activeTableDataIndex"
+              />
+            </template>
+            <template v-else>
+              <TableRowComponent
+                :customers="customersStore.filteredCustomers"
+                @toggle-prompt-before-delete-modal="togglePromptBeforeDeleteModal"
+                @toggle-other-actions="toggleOtherActions"
+                @toggle-update-modal="toggleUpdateModal"
+                :active-index="activeTableDataIndex"
+              />
+            </template>
+          </tbody>
+        </table>
+        <template
+          v-if="customersStore.customers.length < 1 || customersStore.filteredCustomers.length < 1"
+        >
+          <p class="text-center pl-5 text-base font-semibold">No data</p>
+        </template>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.no-shrink {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

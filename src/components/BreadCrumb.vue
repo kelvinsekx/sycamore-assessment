@@ -19,7 +19,7 @@ const toggleModal = () => {
 <template>
   <div class="flex flex-col max-md:gap-4 max-md:px-4 md:flex-row w-full justify-between">
     <div class="text-3xl font-semibold">Customer</div>
-    <div class="flex gap-6">
+    <div class="flex gap-2 md:gap-6 md:text-base text-sm">
       <div class="border border-black rounded-md px-2 py-1">
         {{ getFormattedDate() }}
         <svg
@@ -28,7 +28,7 @@ const toggleModal = () => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-4 inline-block ml-2 relative bottom-[2px]"
+          class="size-4 inline-block md:ml-2 relative bottom-[2px]"
         >
           <path
             stroke-linecap="round"
@@ -48,7 +48,7 @@ const toggleModal = () => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-4 inline-block ml-2 relative bottom-[2px]"
+          class="size-4 inline-block md:ml-2 relative bottom-[2px]"
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>

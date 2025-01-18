@@ -58,9 +58,9 @@ const handleSubmit = function () {
 
 <template>
   <CardModalComponent :showing="showing" @toggle-modal="emits('toggleModal', { index })">
-    <header class="font-semibold text-2xl pl-4">Update Customer Info {{ index }}</header>
+    <header class="font-semibold text-lg md:text-2xl pl-4">Update Customer Info {{ index }}</header>
     <form @submit.prevent="handleSubmit" class="space-y-4 p-4">
-      <div class="flex gap-4">
+      <div class="md:flex gap-4">
         <div>
           <label for="firstName">First Name</label>
           <input v-model="form.firstName" id="firstName" type="text" class="input" />
@@ -70,7 +70,7 @@ const handleSubmit = function () {
           <input v-model="form.lastName" id="lastName" type="text" class="input" />
         </div>
       </div>
-      <div class="flex gap-4">
+      <div class="md:flex gap-4">
         <div>
           <label for="email">Email</label>
           <input v-model="form.email" id="email" type="email" class="input" />
@@ -80,7 +80,7 @@ const handleSubmit = function () {
           <input v-model="form.phone" id="phone" type="tel" class="input" />
         </div>
       </div>
-      <div class="flex gap-4 items-start">
+      <div class="md:flex gap-4 items-start">
         <div>
           <label for="state">State</label>
           <select v-model="form.state" id="state" class="input">

@@ -21,7 +21,7 @@ const customersStore = useCustomerStore()
 <template>
   <CardModalComponent :showing="showing" @toggle-modal="emits('toggleModal')">
     <div>
-      <h1 class="text-4xl">
+      <h1 class="text-lg md:text-3xl">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
